@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Insurance Cost Predictor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Insurance Cost Predictor</h2>
+  <form  method = "POST" action="/predict">
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" class="form-control" id="age" placeholder="Enter age" name="age" min="1" max="120" required>
+    </div>
+
+    <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" required>
+                <option value="">Select...</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+    </div>
+
+    <div class="form-group">
+      <label for="bmi">BMI:</label>
+      <input type="number" class="form-control" id="bmi" placeholder="Enter BMI" name="bmi" min="0" step="0.01" required>
+    </div>
+
+    <div class="form-group">
+      <label for="children">Children:</label>
+      <input type="number" class="form-control" id="children" placeholder="Enter number of children" name="children" min="0" required>
+    </div>
+
+    <div class="form-group">
+            <label for="smoker">Smoker:</label>
+            <select id="smoker" name="smoker" required>
+                <option value="">Select...</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+    </div>
+
+    <div class="form-group">
+            <label for="region">Region:</label>
+            <select id="region" name="region" required>
+                <option value="">Select...</option>
+                <option value="2">Northeast</option>
+                <option value="3">Northwest</option>
+                <option value="1">Southeast</option>
+                <option value="0">Southwest</option>
+            </select>
+</div>
+
+<button type="submit" class="btn btn-default">Submit</button>
+{% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+
+</body>
+</html>
